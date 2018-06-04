@@ -1,11 +1,14 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
     username: DataTypes.STRING,
     image_url: DataTypes.STRING
   }, {});
-  User.associate = function(models) {
-    // associations can be defined here
+  User.associate = models => {
+    User.hasMany(models.Clucks, {
+      foreignKey: 'userId',
+      as: 'userClucks',
+    });
   };
   return User;
-};
+}
