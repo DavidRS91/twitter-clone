@@ -1,11 +1,14 @@
 'use strict';
-export default (sequelize, DataTypes) => {
+export default function (sequelize, DataTypes) {
   var User = sequelize.define('User', {
-    username: DataTypes.STRING,
-    image_url: DataTypes.STRING
-  }, {});
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
+  },
+);
   User.associate = models => {
-    User.hasMany(models.Clucks, {
+    User.hasMany(models.Cluck, {
       foreignKey: 'userId',
       as: 'userClucks',
     });
