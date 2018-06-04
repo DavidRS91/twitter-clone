@@ -1,17 +1,17 @@
 'use strict';
+
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define('User', {
     username: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     }
-  },
-);
-  User.associate = models => {
+  });
+  User.associate = function (models) {
     User.hasMany(models.Cluck, {
       foreignKey: 'userId',
-      as: 'userClucks',
+      as: 'userClucks'
     });
   };
   return User;
-}
+};

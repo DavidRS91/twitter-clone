@@ -1,5 +1,5 @@
-import clucks from './clucks'
+const clucks = require('./clucks')
 
-export default {
+module.exports = {
     clucks,
 }

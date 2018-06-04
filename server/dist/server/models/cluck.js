@@ -1,18 +1,18 @@
 'use strict';
+
 module.exports = function (sequelize, DataTypes) {
   var Cluck = sequelize.define('Cluck', {
     image_url: DataTypes.STRING,
     content: {
       type: DataTypes.TEXT,
-    allowNull: false,
+      allowNull: false
     }
-  },
-);
-  Cluck.associate = models => {
+  });
+  Cluck.associate = function (models) {
     Cluck.belongsTo(models.User, {
       foreignKey: 'userId',
-      onDelete: 'CASCADE',
+      onDelete: 'CASCADE'
     });
   };
   return Cluck;
-}
+};
